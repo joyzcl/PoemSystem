@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="poem.mapper.UserMapper">
+
+    <resultMap type="poem.entity.User" id="userMap">
+        <id property="uid" column="uid" />
+        <result property="uname" column="uname" />
+        <result property="upass" column="upass" />  
+        <result property="gender" column="gender" />
+        <result property="isAdmin" column="isAdmin" />  
+          
+    </resultMap>
+
+    <!-- 此处select标签的id值对应Mapper类中方法名 -->
+    <select id="getUserByName" parameterType="string" resultMap="userMap">
+            <!-- 此处写sql语句,#{Mapper类传入的参数} -->
+            select * from UserTable where uname = #{uname}
+    </select>
+</mapper>
